@@ -33,4 +33,11 @@ export const categoryService = {
 			throw new Error(err.message);
 		}
 	},
+	getOne: async (data) => {
+		try {
+			return await Category.findOne(data);
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	},
 };

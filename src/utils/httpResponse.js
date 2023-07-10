@@ -165,7 +165,6 @@ export const httpResponse = {
 		data = {},
 		message = ErrorCodesMeta.INTERNAL_SERVER_ERROR.message
 	) => {
-		console.log(data);
 		res.status(403).json({
 			meta: {
 				status: 409,

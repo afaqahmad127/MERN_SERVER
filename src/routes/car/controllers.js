@@ -1,3 +1,4 @@
+import ErrorCodes from '../../constants/error-codes.js';
 import { carService } from '../../services/index.js';
 import { httpResponse } from '../../utils/index.js';
 
@@ -6,7 +7,11 @@ export const controllers = {
 		try {
 			return httpResponse.SUCCESS(res, await carService.create(req.body));
 		} catch (err) {
-			return httpResponse.INTERNAL_SERVER(res, err.message);
+			if (err.message === ErrorCodes.BAD_REQUEST) {
+				return httpResponse.BAD_REQUEST(res, 'Category does not exit!');
+			} else {
+				return httpResponse.INTERNAL_SERVER(res, err.message);
+			}
 		}
 	},
 	read: async (req, res) => {

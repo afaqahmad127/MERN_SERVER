@@ -18,7 +18,6 @@ export const controllers = {
 	},
 	update: async (req, res) => {
 		try {
-			console.log(req.body);
 			return httpResponse.SUCCESS(
 				res,
 				await categoryService.update(req.params.id, req.body)
